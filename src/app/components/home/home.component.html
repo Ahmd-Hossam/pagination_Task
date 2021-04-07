@@ -1,0 +1,76 @@
+
+<div class="container">
+    <table class='table table-striped'>
+        <thead>
+            <tr> 
+                <td style="font-weight: bold;"> gender </td>
+                <td style="font-weight: bold;"> name  </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of data | paginate: { id: 'my_users',
+            itemsPerPage: pageSize,
+            currentPage: page,
+            totalItems: totalRecords }">
+            <td> {{user.gender}}</td>
+            <td> <a style="cursor: pointer; color: blue;" (click)='showdetails(user,content)'> {{user.name.first}} </a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="buttons">
+        <button *ngIf='!isActive' class="btn btn-primary getAll" (click)='getAll()'> Get All </button> &nbsp; &nbsp;
+        <button *ngIf='isActive' class="btn btn-danger reset" (click)='Reset()'> Reset  </button>
+    </div>
+    <pagination-controls  id="my_users"
+                          (pageChange)="pageChanged($event)"
+                          (pageBoundsCorrection)="pageChanged($event)"
+                          previousLabel="Previous"
+                          nextLabel="Next"  
+                          previousLabel="Previous"
+                          screenReaderPaginationLabel="Pagination"
+                          screenReaderPageLabel="page"
+                          screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+
+    <!-- get user details data -->
+    <ng-template class="modal_pop" #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title" [style.margin-bottom]="'0'" [style.font-weight]="'bold'"> User Data !</h4>
+          <button [ngStyle]="{border:'none', outline:'none'}" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body" >
+            <div class="row">
+                <div class="col-md-7" [style.padding-right]="'0'" >
+                    <div class="info" >
+                        <p [style.font-weight]="'bold'">  Name:  <span [style.font-weight]="'normal'">   {{user_FirstName}} {{user_LastName}}  </span> </p>
+                        <p [style.font-weight]="'bold'">  Age:   <span [style.font-weight]="'normal'">   {{user_Age}}    </span> </p>
+                        <p [style.font-weight]="'bold'">  Phone: <span [style.font-weight]="'normal'">   {{user_Phone}}  </span> </p>
+                        <p [style.font-weight]="'bold'">  Email: <span [style.font-weight]="'normal'">   {{user_Email}}  </span> </p>
+                        <p [style.font-weight]="'bold'">  Address: <span [style.font-weight]="'normal'"> {{user_City}}, {{user_Country}}  </span> </p>
+                        <p [style.font-weight]="'bold'">  Post Code: <span [style.font-weight]="'normal'"> {{user_PostCode}}    </span></p>
+                        <p [style.font-weight]="'bold'">  Street: <span [style.font-weight]="'normal'"> {{user_StreetNumber}} , {{user_StreetName}} street  </span></p>
+                    </div>
+                </div>  
+                <div class="col-md-5" [style.order]="'2'">
+                    <div class="cont_img" [style.width]="'100%'">
+                        <img src="{{user_Picture}}" alt="" [ngStyle]="{width:'100%', height:'100%'}"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <!--
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+            </div>
+        -->
+
+      </ng-template>  
+
+       <!-- 
+        <button class="btn btn-primary" (click)="getTask()"> Task api </button>
+       -->
+</div>

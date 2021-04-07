@@ -1,0 +1,26 @@
+.container{
+    overflow: hidden;
+    .buttons{
+        position: relative;
+        top: 11px;
+        left: 500px;
+        @media(max-width:767px){
+            left: 75%;
+            top: 60px;
+        }
+        button{
+            position: absolute;
+        }
+        .getAll{
+            background-color: #2199E8 !important;
+            @media(max-width:767px){
+                padding: 5px !important;
+            }
+        }
+        .reset{
+            left: -50px;
+        }
+    }
+
+}
+

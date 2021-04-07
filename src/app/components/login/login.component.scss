@@ -1,0 +1,30 @@
+form{
+    width:500px;
+    margin: 100px auto;
+    border: 1px solid #007bff;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+    @media(max-width:767px){
+        width:90%;
+    }
+    label{
+        @media(max-width:502px){
+            display: block;
+            text-align: left;
+        }       
+    }
+    input{
+        width:300px;
+        padding:3px;
+        border-radius: 4px;
+        outline: none;
+        border:1px solid #555;
+        @media(max-width:502px){
+            width: 100%;
+            margin: auto;
+          
+
+        }
+    }
+}
