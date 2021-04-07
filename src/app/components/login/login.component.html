@@ -1,7 +1,7 @@
 
 <div class="container">
     <form [formGroup]='myform' (submit)='login()'>
-        <h3>Login </h3>
+        <h3 [style.font-weight]="'bold'">Login </h3>
         <div class="form-group mb-3">
             <label for="txtusername" class="form-label E-label"> Email </label> 
             <input type="email" name="email" formControlName='email' [ngClass]="{'is-invalid': submited && f.email.errors}" email>
