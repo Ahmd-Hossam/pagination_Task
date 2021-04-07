@@ -3,7 +3,7 @@
     <form [formGroup]='myform' (submit)='login()'>
         <h3>Login </h3>
         <div class="form-group mb-3">
-            <label for="txtusername" class="form-label"> Email </label> 
+            <label for="txtusername" class="form-label E-label"> Email </label> 
             <input type="email" name="email" formControlName='email' [ngClass]="{'is-invalid': submited && f.email.errors}" email>
             <div *ngIf='submited && f.email.errors' class='invalid-feedback'>
                 <div *ngIf='f.email.errors.required'> this field is requierd </div>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="form-group mb-3">
-            <label for="txtpassword" class="form-label"> Password</label> 
+            <label for="txtpassword" class="form-label P-label"> Password</label> 
             <input type="password" name="password" formControlName='password' [ngClass]="{'is-invalid':submited && f.password.errors}" minlength="6">
             <div *ngIf='submited && f.password.errors' class='invalid-feedback'>
                 <div *ngIf='f.password.errors.required '> this field is requierd </div>
